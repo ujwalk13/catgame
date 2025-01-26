@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsinnmh1lmvgc"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_35j5b"]
+[ext_resource type="Texture2D" uid="uid://brgurh1ow3n8g" path="res://assets/enemies/slime mc idle.png" id="1_708k6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbw25"]
+atlas = ExtResource("1_708k6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u02e"]
+atlas = ExtResource("1_708k6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0ffd"]
+atlas = ExtResource("1_708k6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb8hg"]
+atlas = ExtResource("1_708k6")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_joglp"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attacking\\",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"damage taken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbw25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u02e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0ffd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb8hg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kt2b"]
+radius = 23.0
+
+[node name="slime" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_35j5b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-1, -23)
+scale = Vector2(3.15853, 2.89785)
+sprite_frames = SubResource("SpriteFrames_joglp")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(2, -23)
+shape = SubResource("CircleShape2D_8kt2b")
