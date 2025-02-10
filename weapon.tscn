@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gw178bki3vt"]
+
+[ext_resource type="Texture2D" uid="uid://kby6icv5pryt" path="res://assets/mc/weapon.png" id="1_4as62"]
+[ext_resource type="Script" path="res://weapon.gd" id="1_sm5y3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kemij"]
+radius = 265.524
+
+[node name="weapon" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_sm5y3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.61191, 1.49544)
+shape = SubResource("CircleShape2D_kemij")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+scale = Vector2(1.06731, 0.891858)
+
+[node name="Weapon" type="Sprite2D" parent="Marker2D"]
+position = Vector2(71.2071, 0)
+texture = ExtResource("1_4as62")
+
+[node name="shooting point" type="Marker2D" parent="Marker2D/Weapon"]
+position = Vector2(11.2976, -2.37705)
